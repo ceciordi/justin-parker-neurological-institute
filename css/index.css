@@ -1,0 +1,65 @@
+
+.jumbotron {
+	margin-bottom: 34px;
+}
+
+.jumbotron {
+	background: url(../img/brain-hands.jpg) no-repeat center center;
+	background-attachment: fixed;
+	padding: 0;
+	
+}
+
+.jumbotron , .call-to-action .btn {
+	box-shadow: 5px 5px 20px rgba(77, 6, 44, 0.51); 
+}
+
+.jumbotron h1 {
+	font-weight: lighter;
+	margin-bottom: 10px;
+	color: #d6d4d4;
+}
+
+.overlay {
+	background-color:  rgba(0,0,0,0.55);
+	padding: 55px;   
+}
+
+.lead {
+	color: #d6d4d4;
+	word-spacing: 2px;
+	letter-spacing: 2px;
+}
+
+.call-to-action {
+	text-align: center;
+}
+
+.call-to-action .btn {
+	color: #fff;
+	padding: 27px;
+	margin-top: 21px;
+	border-radius: 0;
+}
+ 
+.call-to-action .btn span {
+	letter-spacing: 3px;
+}
+
+.container > .row .col-md-6 ul {
+	font-size: 1em;
+	list-style: square;
+}
+
+#gifts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#gifts p {
+	font-size: 115%;
+}
+
+

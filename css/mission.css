@@ -1,0 +1,41 @@
+
+.mission, .images {
+	border: 1px solid #e81515;
+}
+
+.mission {
+	background: url(../img/brain-hands.jpg) no-repeat center center;
+	background-origin: border-box;
+	padding: 17px;
+}
+
+.mission h1 {
+	font-size: 40px;
+	font-weight: lighter;
+	margin-bottom: 10px;
+	color: #d6d4d4;
+} 
+
+.mission p {
+	color: #d6d4d4;
+	line-height: 21px;
+	margin-bottom: 21px;
+} 
+.call-to-action {
+	text-align: center;
+}
+
+.call-to-action .btn {
+	color: #fff;
+	padding: 27px;
+	margin-top: 21px;
+	border-radius: 0;
+}
+ 
+.call-to-action .btn span {
+	letter-spacing: 3px;
+}
+
+.call-to-action .btn {
+	box-shadow: 5px 5px 20px rgba(77, 6, 44, 0.51); 
+}
