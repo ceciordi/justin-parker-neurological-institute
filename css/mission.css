@@ -52,6 +52,12 @@ body {
 	width: 100%;
 }
 
+.img-fluid {
+	
+	max-width: 100%;
+	height: auto;
+}
+
 .site-content {
 	flex: 1;
 	background-color: #fff;
