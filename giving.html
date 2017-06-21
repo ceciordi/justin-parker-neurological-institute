@@ -50,7 +50,7 @@
 <div class="site-content">
     <div class="overlay-container">
         <div class="overlay">
-            <form id="donation-form" method="get" action="#">
+            <form id="donation-form" >
                 <ul class="flex-outer">
                     <li>
                         <label for="first-name">First Name</label>
@@ -76,32 +76,32 @@
 
                         <ul class="flex-inner">
                             <li>
-                                <input type="checkbox" id="fifty">
+                                <input type="radio" name="donation" value="50" id="fifty">
                                 <label for="fifty">$50</label>
                             </li>
 
                             <li>
-                                <input type="checkbox" id="one-hundred">
+                                <input type="radio" name="donation" value="100" id="one-hundred">
                                 <label for="one-hundred">$100</label>
                             </li>
 
                             <li>
-                                <input type="checkbox" id="two-hundred-fifty">
+                                <input type="radio" name="donation" value="250" id="two-hundred-fifty">
                                 <label for="two-hundred-fifty">$250</label>
                             </li>
 
                             <li>
-                                <input type="checkbox" id="five-hundred">
+                                <input type="radio" name="donation" value="500" id="five-hundred">
                                 <label for="five-hundred">$500</label>
                             </li>
 
                             <li>
-                                <input type="checkbox" id="other-amount">
+                                <input type="radio" name="donation" value="other" id="other-amount">
                                 <label for="other-amount">Other Amount</label>
                             </li>
 
                             <li>
-                                <button type="submit" class="btn btn-primary submit-btn">
+                                <button type="submit" id="submit" class="btn btn-primary submit-btn" data-toggle="modal" data-target="#myModal">
                                     Continue
                                 </button>
                                 <!--    data-toggle="modal"
@@ -179,12 +179,21 @@ src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js" ></scri
 
 
 <script type="text/javascript">
-	$(function () {
-		if (window.location.search.indexOf('first-name') === -1) {
-			return;
-		}
-		var $modal = $('#myModal').modal();
+//	$(function () {
+//		if (window.location.search.indexOf('first-name') === -1) {
+//			return;
+//		}
+//		var $modal = $('#myModal').modal();
+//	});
+	
+	$("#submit").click(function(e){
+			fname = $("#first-name").val();
+			console.log(fname);
+			$(".modal-body").append("<p>" + fname +"</p>");
+			e.preventDefault();
 	});
+
+	
 
     //		$("#donation-form").on('submit', function(e) {
     //			e.preventDefault();
