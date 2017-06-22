@@ -7,7 +7,6 @@
 	background: url(../img/brain-hands.jpg) no-repeat center center;
 	background-attachment: fixed;
 	padding: 0;
-	
 }
 
 .jumbotron , .call-to-action .btn {
@@ -62,4 +61,7 @@
 	font-size: 115%;
 }
 
+/*@media (max-device-width: 767px) {*/
+
+/*}*/
 

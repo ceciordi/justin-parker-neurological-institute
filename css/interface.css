@@ -30,7 +30,7 @@ ul.navbar-nav li:last-child {
 	margin-right: 0;
 }
 
-nav.navbar .nav-container > .navbar-collapse,
+/*nav.navbar .nav-container > .navbar-collapse,*/
 nav.navbar ul {
 	display: inline-block !important;
 	width: auto;
@@ -80,4 +80,12 @@ p {
 
 .site-content {
 	flex: 1;
+}
+
+@media (max-device-width: 767px) {
+	.site-content {
+		width: 100%;
+		padding: 0;
+		margin: 0;
+	}
 }
