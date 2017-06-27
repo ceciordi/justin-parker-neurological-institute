@@ -137,6 +137,8 @@
                 </div>
                 <div class="modal-body">
                     <p>Feel free to contact us at either jpni@gmail.com or call us at 303-938-5700</p>
+					
+					<div class="success-message"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -163,12 +165,25 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 
     // Listen for window load
     $(function () {
 
-        // Get elements for manipulation
+         // Get elements for manipulation
+		 //usage of $ indicates it's a Jquery selection, not the DOM element. (convention seen on google search).
         var $donationForm = $("#donation-form");
         var $otherAmountWrapper = $("#other-amount-wrapper");
         var $otherAmountRadioElm = $("#other-amount");
@@ -178,10 +193,10 @@
         $otherAmountWrapper.hide("slow");
 
         // Listen for form submit
-        $donationForm.submit(function (e) {
+        $donationForm.submit(function (event) {
 
             // Stop form from submitting itself
-            e.preventDefault();
+            event.preventDefault();
 
             // Get form element values
             var firstName = $("#first-name").val();
@@ -191,42 +206,56 @@
             var donation = $("[name='donation']").val();
             var otherAmountValue = $("#other-amount-value").val();
             var modal = $("#myModal").modal({show: false});
+			var success = $(".success-message");
 
-            // Compose message
+            // Compose message for popup
             var msg =
                 "<p>You have entered the " +
                     "following information:<br />" +
                     "First Name: " + firstName + "<br />" +
-                    "Last Name: " + firstName + "<br />" +
+                    "Last Name: " + lastName + "<br />" +
                     "Email: " + email + "<br />" +
                     "Phone: " + phone + "<br />" +
                     "Donation Amount: $ ";
 
-            // Get donation amount
+            // Get donation amount:
+            // *Note: The donation amount can be either one of the predefined ones (radio btns) or
+            // it can be entered in to the "other value" text field.
+            // Check if predefined radio button amount is "checked"
             if ($otherAmountRadioElm.get(0).checked) {
                 msg += otherAmountValue;
             }
+            // Else if not checked then use the value entered into the "other amount" field
             else {
                 msg += donation;
             }
 
-            // Close tag in message
+            // Close html tag in message string
             msg += "</p>";
 
-            // Print out msg
-            $(".modal-body").append(msg);
+            // Print out message string into modal popup
+			// gets rid of previous result, displays new result.
+            success.html("").append(msg);
 
-            // Show modal
+            // Show modal (calls the 'show' method of the bootstrap "modal" component)
             modal.modal("show");
         });
 
         // Listen for click on radio buttons
-        $donationForm.find("input[type='radio']").click(function (e) {
-            var radioBtn = e.currentTarget; // raw dom element
+        // Detailed:
+        // - In the donation form find all <input type="radio" /> buttons
+        // - Then for the returned jquery selection listen for the click event
+        //  on each one of the elements in the selection.
+        $donationForm.find("input[type='radio']").click(function (event) {
 
+            // Get the DOM element representing the clicked radio button
+            var radioBtn = event.currentTarget;
+
+            // If "other amount" radio button is clicked show the "other amount" input field
             if (radioBtn.id === otherAmountRadioName && radioBtn.checked) {
                 $otherAmountWrapper.show();
             }
+            // Else make sure the "other amount" input field is hidden
             else {
                 $otherAmountWrapper.hide();
             }
@@ -236,6 +265,8 @@
 
 
 </script>
+
+
 
 </body>
 </html>
