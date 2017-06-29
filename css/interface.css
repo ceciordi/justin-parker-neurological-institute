@@ -30,7 +30,7 @@ ul.navbar-nav li:last-child {
 	margin-right: 0;
 }
 
-nav.navbar .nav-container > .navbar-collapse,
+/*nav.navbar .nav-container > .navbar-collapse,*/
 nav.navbar ul {
 	display: inline-block !important;
 	width: auto;

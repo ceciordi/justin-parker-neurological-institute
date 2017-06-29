@@ -91,7 +91,8 @@
                             </li>
 
                             <li>
-                                <input type="radio" name="donation" value="other" id="other-amount">
+                                <input type="radio" name="donation" value="other" 
+									   id="other-amount">
                                 <label for="other-amount">Other Amount</label>
                             </li>
 
@@ -179,17 +180,18 @@
 
 <script type="text/javascript">
 
-    // Listen for window load
-    $(function () {
-
+    	// Listen for window to be ready
+		// ready comes first (all html is parsed) then load (everything else has loaded, src, href, videos...).
+    	$(document).ready(function () {
+			
          // Get elements for manipulation
-		 //usage of $ indicates it's a Jquery selection, not the DOM element. (convention seen on google search).
+		 // Usage of $ indicates it's a Jquery selection, not the DOM element.
         var $donationForm = $("#donation-form");
         var $otherAmountWrapper = $("#other-amount-wrapper");
         var $otherAmountRadioElm = $("#other-amount");
         var otherAmountRadioName = "other-amount";
 
-        // Hide 'other amount value' element wrapper
+        // Hide 'other amount value' element wrapper (li line 109)
         $otherAmountWrapper.hide("slow");
 
         // Listen for form submit
@@ -218,6 +220,7 @@
                     "Phone: " + phone + "<br />" +
                     "Donation Amount: $ ";
 
+			
             // Get donation amount:
             // *Note: The donation amount can be either one of the predefined ones (radio btns) or
             // it can be entered in to the "other value" text field.
@@ -233,25 +236,26 @@
             // Close html tag in message string
             msg += "</p>";
 
+			// Replace old html with nothing then append new msg html
             // Print out message string into modal popup
-			// gets rid of previous result, displays new result.
             success.html("").append(msg);
 
             // Show modal (calls the 'show' method of the bootstrap "modal" component)
             modal.modal("show");
         });
 
-        // Listen for click on radio buttons
-        // Detailed:
-        // - In the donation form find all <input type="radio" /> buttons
+        // Listen for click on radio button:
+        // - In the donation form, find all <input type="radio" /> buttons
         // - Then for the returned jquery selection listen for the click event
         //  on each one of the elements in the selection.
+		// `event` is an Event object (contains information about the user generated event (in this case the click event - contains the clientX and clientY positions and the useful `currentTarget` property which holds the element that the event was triggered from))
         $donationForm.find("input[type='radio']").click(function (event) {
 
             // Get the DOM element representing the clicked radio button
             var radioBtn = event.currentTarget;
 
             // If "other amount" radio button is clicked show the "other amount" input field
+			
             if (radioBtn.id === otherAmountRadioName && radioBtn.checked) {
                 $otherAmountWrapper.show();
             }
